@@ -12,7 +12,7 @@ public class Customer {
     private String surname;
     private String email;
     private String password;
-    private Integer credit;
+    private Double credit;
     private String phoneNumber;
     private Set<Address> addresses;
     private Boolean isActive;
@@ -33,15 +33,16 @@ public class Customer {
         this.password = password;
         this.isActive = true;
         this.accountType = AccountType.STANDARD;
+        this.credit = 0.0;
     }
 
-    public Customer(String name, String surname, String email, String password, Integer credit,
+    public Customer(String name, String surname, String email, String password, Double credit,
                     String phoneNumber, Set<Address> addresses, List<Order> orderList) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
-        this.credit = credit;
+        this.credit = 0.0;
         this.phoneNumber = phoneNumber;
         this.addresses = addresses;
         this.orderList = orderList;
@@ -81,11 +82,11 @@ public class Customer {
         this.password = password;
     }
 
-    public Integer getCredit() {
+    public Double getCredit() {
         return credit;
     }
 
-    public void setCredit(Integer credit) {
+    public void setCredit(Double credit) {
         this.credit = credit;
     }
 

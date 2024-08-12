@@ -9,8 +9,19 @@ import java.util.Optional;
 
 public class PublisherService {
 
-    private PublisherRepository publisherRepository = new PublisherRepository();
+    private PublisherRepository publisherRepository;
+    private static PublisherService instance;
 
+    private PublisherService(PublisherRepository publisherRepository) {
+        this.publisherRepository = publisherRepository;
+    }
+
+    public static PublisherService getInstance() {
+        if (instance == null) {
+            instance = new PublisherService(PublisherRepository.getInstance());
+        }
+        return instance;
+    }
     /**
      * log eklenilsin
      */

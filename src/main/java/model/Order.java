@@ -9,8 +9,9 @@ public class Order {
 
     private LocalDateTime createDate;
     private List<Product> productList;
-    private String orderCode; //-ordercode generate
+    private String orderCode;
     private OrderStatus orderStatus;
+    private Invoice invoice;
 
     public Order(List<Product> productList, String orderCode) {
         this.createDate = LocalDateTime.now();

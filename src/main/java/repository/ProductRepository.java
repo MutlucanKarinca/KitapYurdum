@@ -1,18 +1,34 @@
 package repository;
 
+import model.Customer;
 import model.Product;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class ProductRepository {
-    private Set<Product> productSet = new HashSet<>();
+    private static ProductRepository instance;
+    private Set<Product> products;
+    private ProductRepository() {
+        products = new HashSet<>();
+    }
+    public static ProductRepository getInstance() {
+        if (instance == null) {
+            instance = new ProductRepository();
+        }
+        return instance;
+    }
 
     public void save(Product product) {
-        productSet.add(product);
+        products.add(product);
     }
 
     public Set<Product> getAll() {
-        return productSet;
+        return products;
+    }
+
+    public Optional<Product> getByName(String name) {
+        return products.stream()
+                .filter(p -> p.getName().equals(name))
+                .findFirst();
     }
 }
